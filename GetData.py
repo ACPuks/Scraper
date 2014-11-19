@@ -11,6 +11,7 @@ def getModulenames():
             continue
         else:
             modules.append(file[:-3])
+    return modules
 def getlink(modulename)
     return eval('Modules.'+modulename+'.returnlink()')
 def getresponse(address):
