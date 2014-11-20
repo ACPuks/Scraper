@@ -30,4 +30,4 @@ def returnsoup(file):
 #tagastab lehekülje lingi
 def returnlink():
     return 'http://chilli.ee'
-print('test')
+print('test2')
