@@ -29,10 +29,9 @@ def returndata():
         for hind in hinnad:
             data[1].append(hind)
 
+
     return data
 data=returndata()
 
 for x in range(len(data[0])):
     print(data[0][x]+' '+data[1][x])
-print(len(data[0]))
-print(len(data[1]))
