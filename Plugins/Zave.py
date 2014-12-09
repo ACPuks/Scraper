@@ -16,4 +16,4 @@ def returndata(response):
 
     return [pakkumised, hinduus]
 def returnlink():
-    return 'http://zave.ee'
+    return 'http://www.zave.ee'

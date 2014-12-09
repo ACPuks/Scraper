@@ -1,4 +1,6 @@
-import os,requests
+import os
+
+import requests
 
 
 ## import modules from the folder Plugins
@@ -15,6 +17,7 @@ def getModulenames():
 
 def returndata():
     data = [[], []]
+    print('getting data')
     for module in getModulenames():
         command="import Plugins." + module
         exec(command)
@@ -29,9 +32,4 @@ def returndata():
         for hind in hinnad:
             data[1].append(hind)
 
-
     return data
-data=returndata()
-
-for x in range(len(data[0])):
-    print(data[0][x]+' '+data[1][x])
