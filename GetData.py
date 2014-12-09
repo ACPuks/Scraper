@@ -16,7 +16,7 @@ def getModulenames():
     return modules
 
 def returndata():
-    data = [[], []]
+    data = [[], [],[]]
     print('getting data')
     for module in getModulenames():
         command="import Plugins." + module
@@ -25,11 +25,14 @@ def returndata():
         response=requests.get(eval(command)).text
         command="Plugins."+module+".returndata("+'"""'+response+'"""'+")"
         data0=eval(command)
-        pakkumised=[x for x in data0[0] if x]
-        hinnad=[x for x in data0[1] if x]
+        pakkumised =[x for x in data0[0] if x]
+        hinnad = [x for x in data0[1] if x]
+        pages = [x for x in data0[2] if x]
         for pakkumine in pakkumised:
             data[0].append(pakkumine)
         for hind in hinnad:
             data[1].append(hind)
+        for page in pages:
+            data[2].append(page)
 
     return data

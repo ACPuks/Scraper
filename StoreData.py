@@ -8,6 +8,5 @@ def store(time,content):
                 print('Tühi pakkumine')
                 pass
             else:
-                print(content[0][pakkumine])
-                writer.writerow([content[0][pakkumine],content[1][pakkumine],time])
+                writer.writerow([content[0][pakkumine],content[1][pakkumine],content[2][pakkumine],time])
     csvfile.close()

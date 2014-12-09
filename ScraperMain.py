@@ -7,13 +7,11 @@ import GetData
 import StoreData
 
 
-pakkumised=[]
-hinnad=[]
-
 def checkData():
     print('checking data')
     pakkumised=[]
     hinnad=[]
+    pages=[]
     try:
         #proovi faili avada
         print('trying to open file')
@@ -35,7 +33,7 @@ def checkData():
     else:
         pass
     for rida in lugeja:
-        pakkumine, hind, aeg = rida
+        pakkumine, hind, page, aeg = rida
         #kontrollib kas pakkumised on aegunud ehk üle 15min vanad
         if datetime.datetime.strptime(aeg,'%Y-%m-%d %H:%M:%S.%f') < datetime.datetime.now()-datetime.timedelta(minutes=15):
             print('Data is old')
@@ -47,9 +45,10 @@ def checkData():
             #väljastab andmed
             pakkumised.append(pakkumine)
             hinnad.append(hind)
+            pages.append(page)
     csv_in.close()
     print('Successfully retrieved data')
-    return [pakkumised, hinnad]
+    return [pakkumised, hinnad, pages]
 
 #programmi pealoop
 while True:
