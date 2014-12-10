@@ -1,7 +1,7 @@
 import datetime
 import csv
-import time
-import os
+from time import sleep
+from os import stat
 
 import GetData
 import StoreData
@@ -9,9 +9,6 @@ import StoreData
 
 def checkData():
     print('checking data')
-    pakkumised=[]
-    hinnad=[]
-    pages=[]
     try:
         #proovi faili avada
         print('trying to open file')
@@ -25,13 +22,16 @@ def checkData():
         csv_in=open('data.csv','r',encoding='UTF-8')
     lugeja=csv.reader(csv_in)
     print('created reader')
-    if os.stat('data.csv').st_size == 0:
+    if stat('data.csv').st_size == 0:
         print('fail on tühi, genereerib uued andmed')
         StoreData.store(datetime.datetime.now(), GetData.returndata())
         print('reopening file cause was empty')
         csv_in=open('data.csv','r',encoding='UTF-8')
     else:
         pass
+    pakkumised=[]
+    hinnad=[]
+    pages=[]
     for rida in lugeja:
         pakkumine, hind, page, aeg = rida
         #kontrollib kas pakkumised on aegunud ehk üle 15min vanad
@@ -54,7 +54,5 @@ def checkData():
 while True:
     #saab andmed
     andmed=checkData()
-    print(andmed)
-    #generate html table from data here...
     #magab 20min
-    time.sleep(20*60)
+    sleep(20*60)

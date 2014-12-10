@@ -11,5 +11,5 @@ def store(time,content):
                 try:
                     writer.writerow([content[0][pakkumine],content[1][pakkumine],content[2][pakkumine] ,time])
                 except:
-                    print(content[0][pakkumine]+content[2][pakkumine])
+                    pass
     csvfile.close()

@@ -1,13 +1,13 @@
-import os
+from os import getcwd, listdir
 
-import requests
+from requests import get
 
 
 ## import modules from the folder Plugins
 def getModulenames():
     modules=[]
-    path=os.getcwd()+'\Plugins'
-    contents=os.listdir(path)
+    path=getcwd()+'\Plugins'
+    contents=listdir(path)
     for file in contents:
         if file[0] == '_':
             continue
@@ -22,7 +22,7 @@ def returndata():
         command="import Plugins." + module
         exec(command)
         command="Plugins."+module+".returnlink()"
-        response=requests.get(eval(command)).text
+        response=get(eval(command)).text
         command="Plugins."+module+".returndata("+'"""'+response+'"""'+")"
         data0=eval(command)
         pakkumised =[x for x in data0[0] if x]

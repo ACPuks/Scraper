@@ -1,5 +1,5 @@
-__author__ = 'Allan'
 from bs4 import BeautifulSoup
+
 def returndata(response):
     pakkumised = []
     hinduus = []

@@ -1,5 +1,3 @@
-import traceback
-
 from bs4 import BeautifulSoup
 
 
@@ -24,12 +22,12 @@ def returndata(response):
                     elif firstnum == True and str(x) not in allowedchars and lastnum == False:
                         lastnum=hind.index(x)
                 except:
-                    print(traceback.format_exc())
+                    pass
 
             try:
                 hind=hind[firstnum-1:lastnum]
-            except Exception:
-                print(traceback.format_exc())
+            except:
+                pass
             pakkumised.append(pakkumine)
             hinduus.append(hind)
             page.append('Chilli')
